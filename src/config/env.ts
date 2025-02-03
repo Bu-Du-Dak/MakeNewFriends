@@ -1,3 +1,3 @@
 import dotenv from "dotenv";
 dotenv.config();
-export const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+export const USER_TOKEN = process.env.USER_TOKEN;
