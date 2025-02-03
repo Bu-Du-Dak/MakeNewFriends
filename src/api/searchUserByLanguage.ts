@@ -7,7 +7,7 @@ export const searchUserByLanguage = async (
   try {
     const response = await githubClient.get(`/search/users`, {
       params: {
-        q: `language:${language}`,
+        q: `language:${language} followers:>100`,
         per_page: maxResult,
       },
     });
