@@ -1,0 +1,8 @@
+node_modules/
+package-lock.json
+
+.github/workflows/.cache/
+.github/workflows/node_modules/
+.github/workflows/dist/
+
+.env
