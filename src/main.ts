@@ -4,13 +4,13 @@ import { getRandomUsers } from "./util/common";
 import { followLog } from "./util/logger";
 
 //* "TypeScript", "Python", "Go" 등 사용하는 언어 조회
-const TARGET_LANGUAGE = ["TypeScript", "Python"];
+const TARGET_LANGUAGE = ["TypeScript"];
 
 //* 검색할 최대 사용자 수
 const MAX_USERS = 10;
 
 //* 각 언어 별 랜덤 팔로우할 사용자 수
-const FOLLOW_COUNT = 1;
+const FOLLOW_COUNT = 5;
 
 const startFollowing = async () => {
   for (const language of TARGET_LANGUAGE) {
