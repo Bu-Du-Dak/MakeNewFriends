@@ -1,48 +1,48 @@
-name: Run Make New Friends
+# name: Run Make New Friends
 
-on:
-  schedule:
-    - cron: "0 9 * * *"
-    - cron: "0 9 * * 1"
-  workflow_dispatch:
+# on:
+#   schedule:
+#     - cron: "0 9 * * *"
+#     - cron: "0 9 * * 1"
+#   workflow_dispatch:
 
-jobs:
-  run-daily-script:
-    runs-on: ubuntu-latest
-    if: github.event.schedule != 'cron(0 9 * * 1)'
+# jobs:
+#   run-daily-script:
+#     runs-on: ubuntu-latest
+#     if: github.event.schedule != 'cron(0 9 * * 1)'
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install
+#       - name: Install dependencies
+#         run: npm install
 
-      - name: Set env
-        run: |
-          echo "USER_TOKEN=${{ secrets.USER_TOKEN }}" >> .env
+#       - name: Set env
+#         run: |
+#           echo "USER_TOKEN=${{ secrets.USER_TOKEN }}" >> .env
 
-      - name: Run script
-        run: |
-          echo "Script execution started at: $(date -u)"
-          npx ts-node src/main.ts
-          echo "Script execution ended at: $(date -u)"
+#       - name: Run script
+#         run: |
+#           echo "Script execution started at: $(date -u)"
+#           npx ts-node src/main.ts
+#           echo "Script execution ended at: $(date -u)"
 
-  run-weekly-script:
-    runs-on: ubuntu-latest
-    if: github.event.schedule == 'cron(0 9 * * 1)'
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+#   run-weekly-script:
+#     runs-on: ubuntu-latest
+#     if: github.event.schedule == 'cron(0 9 * * 1)'
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install
+#       - name: Install dependencies
+#         run: npm install
 
-      - name: Set env
-        run: |
-          echo "USER_TOKEN=${{ secrets.USER_TOKEN }}" >> .env
-      - name: Run weekly script
-        run: |
-          echo "Weekly script execution started at: $(date -u)"
-          npx ts-node src/api/unfollowUsers.ts
-          echo "Weekly script execution ended at: $(date -u)"
+#       - name: Set env
+#         run: |
+#           echo "USER_TOKEN=${{ secrets.USER_TOKEN }}" >> .env
+#       - name: Run weekly script
+#         run: |
+#           echo "Weekly script execution started at: $(date -u)"
+#           npx ts-node src/api/unfollowUsers.ts
+#           echo "Weekly script execution ended at: $(date -u)"

@@ -1,0 +1,26 @@
+name: Run Make New Friends - Daily
+
+on:
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+jobs:
+  run-daily-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Set env
+        run: |
+          echo "USER_TOKEN=${{ secrets.USER_TOKEN }}" >> .env
+
+      - name: Run daily script
+        run: |
+          echo "Script execution started at: $(date -u)"
+          npx ts-node src/main.ts
+          echo "Script execution ended at: $(date -u)"
